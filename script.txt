@@ -1,0 +1,45 @@
+create table ingredientes (
+id_ingredientes int not null auto_increment primary key,
+nome_ingrediente varchar(20) not null,
+quantidade_ingredientes int not null,
+marca_ingredientes varchar(45) not null,
+data_validade date not null,
+foto_ingrediente varchar(200) not null
+);
+
+create table produtos (
+idProduto int not null auto_increment primary key,
+nomeProduto varchar(20) not null,
+descricaoProduto varchar(100) not null,
+precoProduto float not null,
+fotoProduto varchar(200)
+);
+
+create table categorias (
+idCategorias int not null auto_increment primary key,
+nomeCategoria varchar(45) not null
+);
+
+create table pedidos (
+idPedidos int not null auto_increment primary key,
+horarioPedido time not null,
+valorTotal float not null,
+formaEntrega varchar(45) not null,
+dataPedido date not null
+);
+
+create table promocoes (
+idPromocoes int not null auto_increment primary key,
+precoPromocao varchar(10) not null,
+nomePromocao varchar(60) not null,
+fotoPromocional varchar(200)
+);
+
+create table usuario (
+idUser int not null auto_increment primary key,
+nomeCliente varchar(250) not null,
+dataNascimento date not null,
+email varchar(60) not null,
+senha varchar(8) not null,
+
+)
