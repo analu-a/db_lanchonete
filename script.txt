@@ -7,6 +7,20 @@ data_validade date not null,
 foto_ingrediente varchar(200) not null
 );
 
+insert into ingredientes(
+nome_ingrediente,
+quantidade_ingredientes,
+marca_ingredientes,
+data_validade,
+foto_ingrediente 
+) values (
+"Maionese",
+"10",
+"Heinz",
+"2024-12-09",
+"https://covabra.vtexassets.com/arquivos/ids/168371-800-450?v=638107421032730000&width=800&height=450&aspect=true"
+)
+
 create table produtos (
 idProduto int not null auto_increment primary key,
 nomeProduto varchar(20) not null,
@@ -15,10 +29,29 @@ precoProduto float not null,
 fotoProduto varchar(200)
 );
 
+insert into produtos (
+nomeProduto,
+descricaoProduto,
+precoProduto,
+fotoProduto) values (
+"Coxinha",
+"Nossa deliciosa e crocante coxinha é de dar água na boca",
+"5.00",
+"https://panattos.com.br/uploads/produtos/2017/03/coxinha-de-frango-com-requeijao-mini-congelada.jpg"
+);
+
 create table categorias (
 idCategorias int not null auto_increment primary key,
 nomeCategoria varchar(45) not null
 );
+
+insert into categorias (
+nomeCategoria
+) values (
+"Bebidas"),
+("Sobremesas"),
+("salgados"),
+("Lanches");
 
 create table pedidos (
 idPedidos int not null auto_increment primary key,
@@ -28,11 +61,56 @@ formaEntrega varchar(45) not null,
 dataPedido date not null
 );
 
+insert into pedidos(
+horarioPedido,
+valorTotal,
+formaEntrega,
+dataPedido
+) values (
+"12:30:00"
+),
+("50.00"),
+("Retirada no local"),
+("2024-06-25");
+
 create table promocoes (
 idPromocoes int not null auto_increment primary key,
 precoPromocao varchar(10) not null,
 nomePromocao varchar(60) not null,
 fotoPromocional varchar(200)
+);
+
+insert into promocoes(
+precoPromocao,
+nomePromocao,
+fotoPromocional
+) values (
+"20.90",
+"Dia das mães mais doce",
+"https://i.pinimg.com/originals/11/bd/c0/11bdc064568d64c920880297f9c504c5.jpg"
+);
+
+create table endereco (
+idEndereco int not null auto_increment primary key,
+logradouro varchar(200),
+numeroCasa int,
+bairro varchar(20),
+cidade varchar(20),
+cep int
+);
+
+insert into endereco (
+logradouro,
+numeroCasa,
+bairro,
+cidade,
+cep
+) values (
+"Rua Maria Luiza de Campos",
+"109",
+"Parque Jandaia",
+"Carapicuíba",
+"06330-100"
 );
 
 create table usuario (
@@ -41,5 +119,82 @@ nomeCliente varchar(250) not null,
 dataNascimento date not null,
 email varchar(60) not null,
 senha varchar(8) not null,
+enderecoId int
+foreing key(enderoId) references endereco(idEndereco)
+);
 
+insert into usuario (
+nomeCliente,
+dataNascimento,
+email,
+senha
+) values (
+"Ana",
+"2006-07-22",
+"ana.lu@gmail.com",
+"1234"
+);
+
+create table funcionarios(
+idFuncionarios int not null auto_increment primary key,
+nomeFucionario varchar(250),
+senhaFuncionario varchar(8),
+emailFuncionario varchar(60)
+);
+
+insert into funcionarios (
+nomeFucionario,
+senhaFuncionario,
+emailFuncionario 
+) values (
+"Claudia",
+"3456",
+"clau123@gmail.com"
+);
+
+create table ingrediente_produto(
+idIngrediente_produto int not null auto_increment primary key,
+ingredientesId int,
+produtosId int,
+foreing key(ingredientesId) references ingredientes(idIngredientes),
+foreing key(produtosId) references produtos(idProduto)
+);
+
+create table produto_pedido(
+idProduto_pedido int not null auto_increment primary key,
+produtoId int,
+pedidosId int,
+foreing key(produtosId) references produtos(idProduto),
+foreing key(pedidosId) references pedidos(idPedidos)
+);
+
+create table produto_categoria(
+idProduto-categoria int not null auto_increment primary key,
+categoriaId int,
+idProdutos int,
+foreing key(categoriaId) references categorias(idCategorias),
+foreing key(idProdutos) references produtos(idProduto)
+);
+
+create table formaPagamento(
+idPagamento int not null auto_increment primary key,
+tipoPagamento varchar(20) not null,
+bandeira varchar(45) not null,
+statusPagamento varchar(10) not null,
+cpf varchar(12) not null,
+cupom varchar(45) 
+);
+
+insert into formaPagamento (
+tipoPagamento,
+bandeira,
+statusPagamento,
+cpf,
+cupom
+) values (
+"Crédito",
+"MasterCard",
+"Pago",
+"3615679898-69",
+"PrimeiraCompra"
 )
