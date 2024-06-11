@@ -145,6 +145,7 @@ senha
 "ana.lu@gmail.com",
 "1234"
 );
+alter table usuario add column fotoUsuario varchar(250) not null;
 
 create table funcionarios(
 idFuncionarios int not null auto_increment primary key,
