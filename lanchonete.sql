@@ -1,6 +1,8 @@
 create database lanchoneteAAJV;
 use lanchoneteAAJV;
 
+
+
 create table ingredientes (
 id_ingredientes int not null auto_increment primary key,
 nome_ingrediente varchar(20) not null,
@@ -140,13 +142,13 @@ senha
 
 create table funcionarios(
 idFuncionarios int not null auto_increment primary key,
-nomeFucionario varchar(250) not null,
+nomeFuncionario varchar(250) not null,
 senhaFuncionario varchar(8) not null,
 emailFuncionario varchar(60) not null
 );
 
 insert into funcionarios (
-nomeFucionario,
+nomeFuncionario,
 senhaFuncionario,
 emailFuncionario 
 ) values (
@@ -237,3 +239,15 @@ foreign key(idCombos) references combos(idCombo),
 foreign key(idDosProdutos) references produtos(idProduto)
 );
 show tables;
+
+
+
+insert into funcionarios(
+            nomeFuncionario,
+            senhaFuncionario,
+            emailFuncionario
+        ) values (
+           "Hanna",
+            "hannaBin",
+            "hanna123@gmail.com"
+        ) 
