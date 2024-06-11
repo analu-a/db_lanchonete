@@ -207,7 +207,6 @@ cupom
 "361567989869",
 "PrimeiraCompra"
 );
-
 create table combos(
 idCombo int not null auto_increment primary key,
 titulo varchar(50) not null,
