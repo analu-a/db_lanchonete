@@ -58,25 +58,31 @@ nomeCategoria
 ("salgados"),
 ("Lanches");
 
-select * from categorias;
 create table pedidos (
 idPedidos int not null auto_increment primary key,
 horarioPedido time not null,
 valorTotal float not null,
 formaEntrega varchar(45) not null,
-dataPedido date not null
+dataPedido date not null,
+pagamentoId int not null,
+foreign key(pagamentoId) references formaPagamento(idPagamento)
 );
-
+alter table pedidos add column statusPedido varchar(20) not null;
 insert into pedidos(
 horarioPedido,
 valorTotal,
 formaEntrega,
-dataPedido
+dataPedido,
+statusPedido,
+pagamentoId
 ) values (
 "12:30:00",
 "50.00",
 "Retirada no local",
-"2024-06-25");
+"2024-06-25",
+"Pedido Pendente",
+1);
+select * from pedidos;
 
 create table promocoes (
 idPromocoes int not null auto_increment primary key,
@@ -172,7 +178,6 @@ pedidosId int,
 foreign  key(produtoId) references produtos(idProduto),
 foreign  key(pedidosId) references pedidos(idPedidos)
 );
-
 create table produto_categoria(
 idProduto_categoria int not null auto_increment primary key,
 categoriaId int,
