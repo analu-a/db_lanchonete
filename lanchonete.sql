@@ -109,7 +109,7 @@ bairro varchar(20) not null,
 cidade varchar(20) not null,
 cep int not null
 );
-
+alter table endereco modify column cep int not null;
 insert into endereco (
 logradouro,
 numeroCasa,
@@ -267,3 +267,4 @@ select * from usuario;
 select endereco.idEndereco, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from endereco inner join usuario on usuario.enderecoId=endereco.idEndereco where idUser=1;
 -- select
 select * from endereco;
+select endereco.cep from endereco;
