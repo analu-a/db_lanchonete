@@ -138,12 +138,16 @@ insert into usuario (
 nomeCliente,
 dataNascimento,
 email,
-senha
+senha,
+enderecoId,
+fotoUsuario
 ) values (
 "Ana",
 "2006-07-22",
 "ana.lu@gmail.com",
-"1234"
+"1234",
+1,
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-3ni8L5EVlTk1gAniY5dGk7tFBlkkWQUyA&s"
 );
 alter table usuario add column fotoUsuario varchar(250) not null;
 
@@ -255,4 +259,10 @@ insert into funcionarios(
            "Hanna",
             "hannaBin",
             "hanna123@gmail.com"
-        ) 
+        );
+-- trazer informações do usuario e do endereço do usuario
+select usuario.nomeCliente, usuario.dataNascimento, usuario.senha, usuario.email, usuario.enderecoId, usuario.fotoUsuario, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from usuario inner join endereco on usuario.enderecoId=endereco.idEndereco where usuario.idUser=3;
+select * from usuario;
+-- trazer informações apenas do endereço do usuario
+select endereco.idEndereco, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from endereco inner join usuario on usuario.enderecoId=endereco.idEndereco where idUser=2;
+select 
