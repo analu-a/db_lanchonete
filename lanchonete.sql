@@ -261,8 +261,9 @@ insert into funcionarios(
             "hanna123@gmail.com"
         );
 -- trazer informações do usuario e do endereço do usuario
-select usuario.nomeCliente, usuario.dataNascimento, usuario.senha, usuario.email, usuario.enderecoId, usuario.fotoUsuario, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from usuario inner join endereco on usuario.enderecoId=endereco.idEndereco where usuario.idUser=3;
+select usuario.nomeCliente, usuario.dataNascimento, usuario.senha, usuario.email, usuario.enderecoId, usuario.fotoUsuario, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from usuario inner join endereco on usuario.enderecoId=endereco.idEndereco where usuario.idUser=1;
 select * from usuario;
 -- trazer informações apenas do endereço do usuario
-select endereco.idEndereco, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from endereco inner join usuario on usuario.enderecoId=endereco.idEndereco where idUser=2;
-select 
+select endereco.idEndereco, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from endereco inner join usuario on usuario.enderecoId=endereco.idEndereco where idUser=1;
+-- select
+select * from endereco;
