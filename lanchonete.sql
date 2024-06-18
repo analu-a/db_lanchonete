@@ -25,7 +25,7 @@ foto_ingrediente
 "2024-12-09",
 "https://covabra.vtexassets.com/arquivos/ids/168371-800-450?v=638107421032730000&width=800&height=450&aspect=true"
 );
-
+select * from ingredientes;
 create table produtos (
 idProduto int not null auto_increment primary key,
 nomeProduto varchar(20) not null,
@@ -44,7 +44,7 @@ fotoProduto) values (
 "5.00",
 "https://panattos.com.br/uploads/produtos/2017/03/coxinha-de-frango-com-requeijao-mini-congelada.jpg"
 );
-
+select * from produtos;
 create table categorias (
 idCategorias int not null auto_increment primary key,
 nomeCategoria varchar(45) not null
@@ -83,6 +83,7 @@ pagamentoId
 "Pedido Pendente",
 1);
 select * from pedidos;
+select sum(valorTotal) from pedidos;
 
 create table promocoes (
 idPromocoes int not null auto_increment primary key,
@@ -171,7 +172,10 @@ produtosId int,
 foreign  key(ingredientesId) references ingredientes(id_ingredientes),
 foreign  key(produtosId) references produtos(idProduto)
 );
-
+insert into ingrediente_produto(
+ingredientesId, produtosId
+)values(1, 1);
+select * from ingrediente_produto;
 create table produto_pedido(
 idProduto_pedido int not null auto_increment primary key,
 produtoId int,
@@ -255,4 +259,5 @@ insert into funcionarios(
            "Hanna",
             "hannaBin",
             "hanna123@gmail.com"
-        ) 
+        );
+
