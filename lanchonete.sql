@@ -110,7 +110,7 @@ bairro varchar(20) not null,
 cidade varchar(20) not null,
 cep int not null
 );
-
+alter table endereco modify column cep int not null;
 insert into endereco (
 logradouro,
 numeroCasa,
@@ -139,12 +139,16 @@ insert into usuario (
 nomeCliente,
 dataNascimento,
 email,
-senha
+senha,
+enderecoId,
+fotoUsuario
 ) values (
 "Ana",
 "2006-07-22",
 "ana.lu@gmail.com",
-"1234"
+"1234",
+1,
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI-3ni8L5EVlTk1gAniY5dGk7tFBlkkWQUyA&s"
 );
 alter table usuario add column fotoUsuario varchar(250) not null;
 
@@ -260,4 +264,15 @@ insert into funcionarios(
             "hannaBin",
             "hanna123@gmail.com"
         );
+<<<<<<< HEAD
 
+=======
+-- trazer informações do usuario e do endereço do usuario
+select usuario.nomeCliente, usuario.dataNascimento, usuario.senha, usuario.email, usuario.enderecoId, usuario.fotoUsuario, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from usuario inner join endereco on usuario.enderecoId=endereco.idEndereco where usuario.idUser=1;
+select * from usuario;
+-- trazer informações apenas do endereço do usuario
+select endereco.idEndereco, endereco.logradouro, endereco.numeroCasa, endereco.bairro, endereco.cidade, endereco.cep from endereco inner join usuario on usuario.enderecoId=endereco.idEndereco where idUser=1;
+-- select
+select * from endereco;
+select endereco.cep from endereco;
+>>>>>>> c01e81209762f1af0725d0fd7d5ec8f636c61f9a
